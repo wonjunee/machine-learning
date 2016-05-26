@@ -1,1 +1,2 @@
-# Machine Learning Course\n## Udacity Data Analyst Nanodegree
+# Machine Learning Course
+## Udacity Data Analyst Nanodegree
