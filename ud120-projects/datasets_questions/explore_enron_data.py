@@ -25,3 +25,7 @@ for k,v  in enron_data.iteritems():
 		count+=1
 
 print count
+
+for k,v  in enron_data.iteritems():
+	if v['poi']:
+		print k
