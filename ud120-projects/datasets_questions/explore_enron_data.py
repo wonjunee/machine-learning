@@ -36,5 +36,46 @@ for k,v  in enron_data.iteritems():
 		if key in poi:
 			print k
 			pprint.pprint(v["total_payments"])
-		
-	
+
+
+# How many folks in this dataset have a quantified salary? What about a known email address?
+email = 0
+salary = 0
+for k, v in enron_data.iteritems():
+	if v["email_address"] != "NaN":
+		email+=1
+	if v["salary"] != "NaN":
+		salary+=1
+
+
+print email
+print salary
+
+## How many people in the E+F dataset (as it currently exists) have 
+## NaN for their total payments? What percentage of people in the dataset as a whole is this?
+
+count = 0
+NaN = 0
+for k, v in enron_data.iteritems():
+	count += 1
+	if v["total_payments"] == "NaN":
+		NaN += 1
+
+print NaN*100/count
+
+# How many POIs in the E+F dataset have NaN for their total payments? 
+# What percentage of POIs as a whole is this?
+
+count = 0
+NaN = 0
+for k, v in enron_data.iteritems():
+	count += 1
+	if v["total_payments"] == "NaN":
+		NaN += 1
+
+print count
+print NaN
+
+# What is the new number of POI’s in the dataset? 
+# What percentage of them have NaN for their total stock value?
+
