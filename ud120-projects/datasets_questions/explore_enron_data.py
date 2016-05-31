@@ -75,7 +75,3 @@ for k, v in enron_data.iteritems():
 
 print count
 print NaN
-
-# What is the new number of POI’s in the dataset? 
-# What percentage of them have NaN for their total stock value?
-
