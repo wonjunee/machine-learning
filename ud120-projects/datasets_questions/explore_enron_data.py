@@ -26,6 +26,15 @@ for k,v  in enron_data.iteritems():
 
 print count
 
+
+# Finding the person who took the largest money
+import pprint 
+poi = ["LAY", "SKILLING", "FASTOW"]
+
 for k,v  in enron_data.iteritems():
-	if v['poi']:
-		print k
+	for key in k.split(" "):
+		if key in poi:
+			print k
+			pprint.pprint(v["total_payments"])
+		
+	
