@@ -51,6 +51,13 @@ for k,v in data_dict.iteritems():
 print "Maximum:", max(feature_2)
 print "Minimum:", min(feature_2)
 
+### Finding min and max values of salary
+feature_2 = []
+for k,v in data_dict.iteritems():
+    if v["salary"]!="NaN":
+        feature_2.append(v["salary"])
+print "Maximum:", max(feature_2)
+print "Minimum:", min(feature_2)
 
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
