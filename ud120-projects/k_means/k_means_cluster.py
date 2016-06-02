@@ -80,6 +80,10 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
+
+## Scaling
+
+
 from sklearn.cluster import KMeans
 clus = KMeans(n_clusters = 3)
 
