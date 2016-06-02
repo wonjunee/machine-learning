@@ -43,6 +43,14 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 ### there's an outlier--remove it! 
 data_dict.pop("TOTAL", 0)
 
+### Finding min and max values of exercised_stock_options
+feature_2 = []
+for k,v in data_dict.iteritems():
+    if v["exercised_stock_options"]!="NaN":
+        feature_2.append(v["exercised_stock_options"])
+print "Maximum:", max(feature_2)
+print "Minimum:", min(feature_2)
+
 
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
@@ -66,7 +74,7 @@ plt.show()
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
 from sklearn.cluster import KMeans
-clus = KMeans(n_clusters = 2)
+clus = KMeans(n_clusters = 3)
 
 clus.fit(finance_features)
 # pred = []
