@@ -83,6 +83,10 @@ plt.show()
 
 ## Scaling
 
+from sklearn.preprocessing import MinMaxScaler
+
+min_max_scaler = MinMaxScaler()
+finance_features = min_max_scaler.fit_transform(finance_features)
 
 from sklearn.cluster import KMeans
 clus = KMeans(n_clusters = 3)
