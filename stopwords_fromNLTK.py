@@ -1,6 +1,6 @@
 ### Download nltk
 import nltk
-nltk.download()
+# nltk.download()
 
 ### Getting Stopwords from NLTK
 from nltk.corpus import stopwords
