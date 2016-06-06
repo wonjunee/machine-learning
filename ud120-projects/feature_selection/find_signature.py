@@ -62,3 +62,4 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 vocab_list = vectorizer.get_feature_names()
 print vocab_list[33614]
+print vocab_list[14343]
