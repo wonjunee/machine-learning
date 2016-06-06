@@ -12,6 +12,8 @@ The dataset used in this example is a preprocessed excerpt of the
 
   original source: http://scikit-learn.org/stable/auto_examples/applications/face_recognition.html
 
+
+This iterative version is to see the changes to F1 score as n_components value increases
 """
 
 
