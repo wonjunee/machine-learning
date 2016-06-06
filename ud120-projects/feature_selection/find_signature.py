@@ -51,4 +51,10 @@ from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred,labels_test)
 print "\nAccuracy:", acc
 
+### featureimportances
+print "\nFeature Importances"
+for i in range(len(clf.feature_importances_)):
+	if clf.feature_importances_[i] > 0:
+		print i, clf.feature_importances_[i]
+
 
