@@ -54,7 +54,7 @@ print "\nAccuracy:", acc
 ### featureimportances
 print "\nFeature Importances"
 for i in range(len(clf.feature_importances_)):
-	if clf.feature_importances_[i] > 0.5:
+	if clf.feature_importances_[i] > 0:
 		print i, clf.feature_importances_[i]
 
 ### Tfidf Here
@@ -62,4 +62,5 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 vocab_list = vectorizer.get_feature_names()
 print vocab_list[33614]
+print vocab_list[14343]
 print vocab_list[14343]
