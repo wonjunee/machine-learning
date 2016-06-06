@@ -91,8 +91,8 @@ param_grid = {
          'C': [1e3, 5e3, 1e4, 5e4, 1e5],
           'gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1],
           }
-# for sklearn version 0.16 or prior, the class_weight parameter value is 'auto'
-clf = GridSearchCV(SVC(kernel='rbf', class_weight='balanced'), param_grid)
+# for sklearn version 0.16 or prior, the class_weight parameter value is 'auto' from 'balanced'
+clf = GridSearchCV(SVC(kernel='rbf', class_weight='auto'), param_grid)
 clf = clf.fit(X_train_pca, y_train)
 print "done in %0.3fs" % (time() - t0)
 print "Best estimator found by grid search:"
@@ -144,3 +144,6 @@ eigenface_titles = ["eigenface %d" % i for i in range(eigenfaces.shape[0])]
 plot_gallery(eigenfaces, eigenface_titles, h, w)
 
 pl.show()
+
+
+print pca.components_
