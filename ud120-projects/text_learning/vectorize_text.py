@@ -94,4 +94,4 @@ print len(vocab_list)
 # 39067
 # 39178
 # 39109
-print "word 34597:", vocab_list[34597] 
+print "word[34597]:", vocab_list[34597]
