@@ -29,29 +29,25 @@ def parseOutText(f):
 
         ### project part 2: comment out the line below
         # words = text_string
-        print text_string
 
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
         ### space between each stemmed word)
         
-        # stemmer2 = SnowballStemmer("english", ignore_stopwords=True)
+        # stemmer = SnowballStemmer("english", ignore_stopwords=True)
         stemmer = SnowballStemmer("english")
-
-        for word in text_string.split(" "):
-            words += stemmer.stem(word) + " "
-
-
+        text_string = text_string.strip()
+        words_list = []
+        for word_pre in text_string.split("\n"):
+            for word in word_pre.split(" "):
+                if word != "":
+                    words_list.append(stemmer.stem(word))
+        words = " ".join(words_list)
     return words
-
-    
 
 def main():
     ff = open("../text_learning/test_email.txt", "r")
     text = parseOutText(ff)
-    print text
-
-
 
 if __name__ == '__main__':
     main()
