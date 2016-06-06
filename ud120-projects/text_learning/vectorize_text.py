@@ -55,7 +55,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             ### use str.replace() to remove any instances of the words
             for word in ["sara", "shackleton", "chris", "germani"]:
                 if word in words:
-                    words = words.replace(word,"")
+                    words = words.replace(word,'')
 
             ### append the text to word_data
             word_data.append(words)
@@ -87,9 +87,11 @@ from nltk.corpus import stopwords
 # tfidf = TfidfVectorizer(stop_words=stopwords.words("english"))
 tfidf = TfidfVectorizer(stop_words='english')
 transformed = tfidf.fit_transform(word_data)
-print len(tfidf.get_feature_names())
+vocab_list = tfidf.get_feature_names()
+print len(vocab_list)
 
 # Wrong Answers:
 # 39067
 # 39178
 # 39109
+print "word 34597:", vocab_list[34597] 
