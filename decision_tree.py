@@ -4,4 +4,10 @@ Y = [0,1]
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(X,Y)
 
-print clf.predict([[2,2]])
+pred = clf.predict([[2,2]])
+
+# Accuracy
+from sklearn.metrics import accuracy_score
+
+acc = accuracy_score(pred,[1])
+print "accuracy:", acc
