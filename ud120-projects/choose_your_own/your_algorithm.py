@@ -33,7 +33,7 @@ plt.show()
 
 from sklearn.neighbors import KNeighborsRegressor
 
-clf = KNeighborsRegressor(n_neighbors=10)
+clf = KNeighborsRegressor(n_neighbors=1)
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 

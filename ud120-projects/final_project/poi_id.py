@@ -20,7 +20,8 @@ with open("final_project_dataset.pkl", "r") as data_file:
 ### Task 3: Create new feature(s)
 ### Store to my_dataset for easy export below.
 my_dataset = data_dict
-
+import pprint
+pprint.pprint (my_dataset)
 ### Extract features and labels from dataset for local testing
 data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
