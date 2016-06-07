@@ -25,8 +25,24 @@ features_list = ["poi", "salary"]
 data = featureFormat(data_dict, features_list)
 labels, features = targetFeatureSplit(data)
 
+### it's all yours from here forward!
 
+### Finding the shape of the data
+h, w = data.shape
 
-### it's all yours from here forward!  
+### set up the train data
+features_train = data[:,1].reshape(h, 1)
+labels_train = data[:,0].reshape(h,1)
 
+### Import decision tree library
+from sklearn import tree
 
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(features_train,labels_train)
+pred = clf.predict(features)
+
+### Accuracy
+from sklearn.metrics import accuracy_score
+
+acc = accuracy_score(pred,labels)
+print "accuracy:", acc
