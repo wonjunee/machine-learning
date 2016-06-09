@@ -11,3 +11,6 @@ salary and loan_advances
 salary and from_this_person_to_poi
 salary and from_poi_to_this_person
 from_this_person_to_poi and from_poi_to_this_person
+
+
+TODO: create another tester.py file and print out only precision accuray and recall values and return it as array.
