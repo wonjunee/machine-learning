@@ -1,0 +1,13 @@
+salary and bonus
+	Apply PCA
+salary and long_term_incentive
+salary and total_payments
+salary and exercised_stock_options
+salary and shared_receipt_with_poi
+salary and expenses
+salary and tota_stock_value
+salary and resticted_stock
+salary and loan_advances
+salary and from_this_person_to_poi
+salary and from_poi_to_this_person
+from_this_person_to_poi and from_poi_to_this_person
