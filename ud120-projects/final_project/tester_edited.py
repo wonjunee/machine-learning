@@ -24,9 +24,17 @@ Recall: {:>0.{display_precision}f}\tF1: {:>0.{display_precision}f}\tF2: {:>0.{di
 RESULTS_FORMAT_STRING = "\tTotal predictions: {:4d}\tTrue positives: {:4d}\tFalse positives: {:4d}\
 \tFalse negatives: {:4d}\tTrue negatives: {:4d}"
 
-def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False, draw_graph=False):
+def test_classifier(clf, dataset, feature_list, folds = 1000, 
+    print_result=False, draw_graph=False, rescale=False):
     data = featureFormat(dataset, feature_list, sort_keys = True)
     labels, features = targetFeatureSplit(data)
+
+    ### Rescale features
+    if rescale:
+        from sklearn.preprocessing import MinMaxScaler
+        min_max_scaler = MinMaxScaler()
+        features = min_max_scaler.fit_transform(features)    
+
     cv = StratifiedShuffleSplit(labels, folds, random_state = 42)
     true_negatives = 0
     false_negatives = 0
@@ -62,6 +70,7 @@ def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False
                 print "Evaluating performance for processed predictions:"
                 break
     if draw_graph:
+        print "drawing"
         prettyPicture(clf, features_test, labels_test)
         plt.show()
     try:
