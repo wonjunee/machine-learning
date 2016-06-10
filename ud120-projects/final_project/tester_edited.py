@@ -18,7 +18,7 @@ from feature_format import featureFormat, targetFeatureSplit
 
 PERF_FORMAT_STRING = "\tAccuracy: {:>0.{display_precision}f}\tPrecision: {:>0.{display_precision}f}\tRecall: {:>0.{display_precision}f}"
 
-def test_classifier(clf, dataset, feature_list, folds = 1000):
+def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False):
     data = featureFormat(dataset, feature_list, sort_keys = True)
     labels, features = targetFeatureSplit(data)
     cv = StratifiedShuffleSplit(labels, folds, random_state = 42)
@@ -62,9 +62,10 @@ def test_classifier(clf, dataset, feature_list, folds = 1000):
         recall = 1.0*true_positives/(true_positives+false_negatives)
         f1 = 2.0 * true_positives/(2*true_positives + false_positives+false_negatives)
         f2 = (1+2.0*2.0) * precision*recall/(4*precision + recall)
-        print clf
-        print PERF_FORMAT_STRING.format(accuracy, precision, recall, f1, f2, display_precision = 5)
-        print ""
+        if print_result:
+            print clf
+            print PERF_FORMAT_STRING.format(accuracy, precision, recall, f1, f2, display_precision = 5)
+            print ""
         return [accuracy, precision, recall]
     except:
         print "Got a divide by zero when trying out:", clf
