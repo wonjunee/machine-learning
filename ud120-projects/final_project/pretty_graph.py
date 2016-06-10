@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pylab as pl
 from sklearn.preprocessing import MinMaxScaler
 
-def prettyPicture(clf, X_test, y_test):
+def prettyPicture(clf, X_test, y_test, feature_list):
 
     x_min = 0.0; x_max = 1.0
     y_min = 0.0; y_max = 1.0
@@ -28,8 +28,8 @@ def prettyPicture(clf, X_test, y_test):
     grade_bkg = [X_test[ii][0] for ii in range(0, len(X_test)) if y_test[ii]==1]
     bumpy_bkg = [X_test[ii][1] for ii in range(0, len(X_test)) if y_test[ii]==1]
 
-    plt.scatter(grade_sig, bumpy_sig, color = "b", label="fast")
-    plt.scatter(grade_bkg, bumpy_bkg, color = "r", label="slow")
+    plt.scatter(grade_sig, bumpy_sig, color = "b", label="non-poi")
+    plt.scatter(grade_bkg, bumpy_bkg, color = "r", label="poi")
     plt.legend()
-    plt.xlabel("bumpiness")
-    plt.ylabel("grade")
+    plt.xlabel(feature_list[1])
+    plt.ylabel(feature_list[2])
