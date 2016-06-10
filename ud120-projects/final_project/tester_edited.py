@@ -69,8 +69,9 @@ def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False
         if print_result:
             print clf
             try:
-                print "Best parameters:"
+                print "\nBest parameters:"
                 print clf.best_params_
+                print ""
             except:
                 print "No GridSearch"
             print PERF_FORMAT_STRING.format(accuracy, precision, recall, f1, f2, display_precision = 5)
