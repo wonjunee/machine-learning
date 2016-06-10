@@ -16,7 +16,11 @@ from sklearn.cross_validation import StratifiedShuffleSplit
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
 
-PERF_FORMAT_STRING = "\tAccuracy: {:>0.{display_precision}f}\tPrecision: {:>0.{display_precision}f}\tRecall: {:>0.{display_precision}f}"
+PERF_FORMAT_STRING = "\
+\tAccuracy: {:>0.{display_precision}f}\tPrecision: {:>0.{display_precision}f}\t\
+Recall: {:>0.{display_precision}f}\tF1: {:>0.{display_precision}f}\tF2: {:>0.{display_precision}f}"
+RESULTS_FORMAT_STRING = "\tTotal predictions: {:4d}\tTrue positives: {:4d}\tFalse positives: {:4d}\
+\tFalse negatives: {:4d}\tTrue negatives: {:4d}"
 
 def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False):
     data = featureFormat(dataset, feature_list, sort_keys = True)
@@ -65,6 +69,7 @@ def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False
         if print_result:
             print clf
             print PERF_FORMAT_STRING.format(accuracy, precision, recall, f1, f2, display_precision = 5)
+            print RESULTS_FORMAT_STRING.format(total_predictions, true_positives, false_positives, false_negatives, true_negatives)
             print ""
         return [accuracy, precision, recall]
     except:
