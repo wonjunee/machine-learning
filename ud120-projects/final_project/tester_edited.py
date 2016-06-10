@@ -82,7 +82,7 @@ def test_classifier(clf, dataset, feature_list, folds = 1000,
 
     if draw_graph:
         print "drawing"
-        prettyPicture(clf, total_features_test, total_labels_test)
+        prettyPicture(clf, total_features_test, total_labels_test, feature_list)
         plt.show()
     try:
         total_predictions = true_negatives + false_negatives + false_positives + true_positives
