@@ -15,6 +15,8 @@ import sys
 from sklearn.cross_validation import StratifiedShuffleSplit
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
+import matplotlib.pyplot as plt
+from pretty_graph import prettyPicture
 
 PERF_FORMAT_STRING = "\
 \tAccuracy: {:>0.{display_precision}f}\tPrecision: {:>0.{display_precision}f}\t\
@@ -22,7 +24,7 @@ Recall: {:>0.{display_precision}f}\tF1: {:>0.{display_precision}f}\tF2: {:>0.{di
 RESULTS_FORMAT_STRING = "\tTotal predictions: {:4d}\tTrue positives: {:4d}\tFalse positives: {:4d}\
 \tFalse negatives: {:4d}\tTrue negatives: {:4d}"
 
-def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False):
+def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False, draw_graph=False):
     data = featureFormat(dataset, feature_list, sort_keys = True)
     labels, features = targetFeatureSplit(data)
     cv = StratifiedShuffleSplit(labels, folds, random_state = 42)
@@ -59,6 +61,9 @@ def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False
                 print "All predictions should take value 0 or 1."
                 print "Evaluating performance for processed predictions:"
                 break
+    if draw_graph:
+        prettyPicture(clf, features_test, labels_test)
+        plt.show()
     try:
         total_predictions = true_negatives + false_negatives + false_positives + true_positives
         accuracy = 1.0*(true_positives + true_negatives)/total_predictions
@@ -77,10 +82,12 @@ def test_classifier(clf, dataset, feature_list, folds = 1000, print_result=False
             print PERF_FORMAT_STRING.format(accuracy, precision, recall, f1, f2, display_precision = 5)
             print RESULTS_FORMAT_STRING.format(total_predictions, true_positives, false_positives, false_negatives, true_negatives)
             print ""
+
         return [accuracy, precision, recall]
     except:
         print "Got a divide by zero when trying out:", clf
         print "Precision or recall may be undefined due to a lack of true positive predicitons."
+
 
 CLF_PICKLE_FILENAME = "my_classifier.pkl"
 DATASET_PICKLE_FILENAME = "my_dataset.pkl"
@@ -107,7 +114,7 @@ def main():
     ### load up student's classifier, dataset, and feature_list
     clf, dataset, feature_list = load_classifier_and_data()
     ### Run testing script
-    test_classifier(clf, dataset, feature_list)
+    test_classifier(clf, dataset, feature_list, print_result=True, draw_graph=True)
 
 if __name__ == '__main__':
     main()
