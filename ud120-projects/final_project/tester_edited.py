@@ -53,8 +53,8 @@ def test_classifier(clf, dataset, feature_list, folds = 1000,
             features_test.append( features[jj] )
             labels_test.append( labels[jj] )
 
-            total_features_test.append( features[jj])
-            total_labels_test.append( labels[jj] )
+            features_test.append( features[jj])
+            labels_test.append( labels[jj] )
 
         
         ### fit the classifier using training set, and test on test set
