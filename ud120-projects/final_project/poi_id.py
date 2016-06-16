@@ -10,7 +10,7 @@ from tester import dump_classifier_and_data
 ### Task 1: Select what features you'll use.
 ### features_list is a list of strings, each of which is a feature name.
 ### The first feature must be "poi".
-features_list = ['poi','salary','bonus'] # You will need to use more features
+features_list = ['poi','bonus','exercised_stock_options'] # You will need to use more features
 
 ### Load the dictionary containing the dataset
 with open("final_project_dataset.pkl", "r") as data_file:
@@ -32,11 +32,19 @@ labels, features = targetFeatureSplit(data)
 ### http://scikit-learn.org/stable/modules/pipeline.html
 
 # Provided to give you a starting point. Try a variety of classifiers.
-from sklearn.naive_bayes import GaussianNB
-clf = GaussianNB()
 
-from sklearn.linear_model import LinearRegression
-clf = LinearRegression()
+### Import GridSearchCV to test various parameters
+from sklearn.grid_search import GridSearchCV
+
+### import Decision Tree
+from sklearn import tree
+
+param_grid = {
+    'criterion': ['gini', 'entropy'],
+    'splitter' : ['best', 'random'],
+    'min_samples_split': range(2,10)
+      }
+clf = GridSearchCV(tree.DecisionTreeClassifier(), param_grid)
 
 ### Task 5: Tune your classifier to achieve better than .3 precision and recall 
 ### using our testing script. Check the tester.py script in the final project
